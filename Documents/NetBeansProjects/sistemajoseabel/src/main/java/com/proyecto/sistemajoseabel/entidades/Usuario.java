@@ -1,0 +1,118 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.proyecto.sistemajoseabel.entidades;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+/**
+ *
+ * @author Personal
+ */
+@Entity
+@Table (name="usuario")
+
+public class Usuario {
+ 
+@GeneratedValue(strategy = GenerationType.IDENTITY)
+@Id
+@Column (name="id")
+private long id;
+
+@Column (name="nombre")
+private String nombre;
+
+@Column (name="apellido")
+private String apellido;
+
+@Column (name="usuario")
+private String usuario;
+
+@Column (name="contrasena")
+private String contrasena;
+
+@Column (name="correo_electronico")
+private String correo_electronico;
+
+@Column(name = "rol")
+private String rol;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getContrasena() {
+        return contrasena;
+    }
+
+    public void setContrasena(String contrasena) {
+        this.contrasena = contrasena;
+    }
+
+    public String getCorreo_electronico() {
+        return correo_electronico;
+    }
+
+    public void setCorreo_electronico(String correo_electronico) {
+        this.correo_electronico = correo_electronico;
+    }
+
+    public String getRol() {
+        return rol;
+    }
+
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
+
+    public Usuario(long id, String nombre, String apellido, String usuario, String contrasena, String correo_electronico, String rol) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.usuario = usuario;
+        this.contrasena = contrasena;
+        this.correo_electronico = correo_electronico;
+        this.rol = rol;
+    }
+
+    public Usuario() {
+    }
+
+  
+
+  
+}
