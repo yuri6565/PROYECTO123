@@ -14,19 +14,20 @@ import jakarta.persistence.Id;
  * @author Personal
  */
 @Entity
-public class Categoria {
+public class UnidadMedida {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer idcategoria;
+    private Long id;
 
     private String nombre;
 
-    public Integer getIdcategoria() {
-        return idcategoria;
+    public Long getId() {
+        return id;
     }
 
-    public void setIdcategoria(Integer idcategoria) {
-        this.idcategoria = idcategoria;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getNombre() {
@@ -36,13 +37,14 @@ public class Categoria {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    
 
-    public Categoria(Integer idcategoria, String nombre) {
-        this.idcategoria = idcategoria;
+    public UnidadMedida(Long id, String nombre) {
+        this.id = id;
         this.nombre = nombre;
     }
-  
+
+    public UnidadMedida() {
+    }
+
     
 }

@@ -288,24 +288,38 @@ setContentPane(fondo);
     private RSMaterialComponent.RSTextFieldIconOne txt_usuario;
     // End of variables declaration//GEN-END:variables
 
- private void autenticarUsuario() {
-        String usuario = txt_usuario.getText();
-        String contrasena = new String(passtxt.getPassword());
+private void autenticarUsuario() {
+    String usuario = txt_usuario.getText();
+    String contrasena = new String(passtxt.getPassword());
 
-        if (servicioLogin.autenticar(usuario, contrasena)) { 
+    if (servicioLogin.autenticar(usuario, contrasena)) {
+        // Crear la pantalla de carga
+        kla cargando = new kla(new JFrame(), true);
+
+        new Thread(() -> {
+            cargando.setVisible(true);
+        }).start();
+
+        javax.swing.Timer timer = new javax.swing.Timer(2000, e -> {
+            cargando.dispose();
+
             JOptionPane.showMessageDialog(this, "Acceso concedido");
-            System.out.println("bien con exitoooooo " + (servicioLogin != null));
-            Principal pc = new Principal();
-         pc.setVisible(true);
-        this.dispose();
 
-        } else {
-            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
-            System.out.println("ServicioLogin inyectado: " + (servicioLogin != null));
+            // Abrir ventana principal
+            Principal11 pc = new Principal11();
+            pc.setVisible(true);
 
-        }
+            // Cerrar login
+            this.dispose();
+        });
+
+        timer.setRepeats(false); // Solo una vez
+        timer.start();
+
+    } else {
+        JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
+        System.out.println("ServicioLogin inyectado: " + (servicioLogin != null));
     }
-
 }
-
+}
 
