@@ -561,7 +561,7 @@ private JPanel submenuInventario;
     }// </editor-fold>//GEN-END:initComponents
 
     private void ochoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ochoActionPerformed
-      /*  if (!this.ocho.isSelected()) {
+        if (!this.ocho.isSelected()) {
             this.uno.setSelected(false);
             this.dos.setSelected(false);
             this.tres.setSelected(false);
@@ -570,7 +570,7 @@ private JPanel submenuInventario;
             this.seis.setSelected(false);
             this.ocho.setSelected(true);
 
-            Cliente cliente = new Cliente();
+            Cliente1 cliente = new Cliente1();
             cliente.setSize(1290, 730);
             cliente.setLocation(0, 0);
 
@@ -581,7 +581,7 @@ private JPanel submenuInventario;
 
         }
         animacion();
-*/
+
     }//GEN-LAST:event_ochoActionPerformed
 
     private void seisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seisActionPerformed
@@ -735,7 +735,9 @@ private JPanel submenuInventario;
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
         JOptionPane.showMessageDialog(null, "Hasta luego");
-        Login1121 lo = new Login1121();
+      Correo_electronico lo = new Correo_electronico();
+lo.setVisible(true);
+
         lo.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed

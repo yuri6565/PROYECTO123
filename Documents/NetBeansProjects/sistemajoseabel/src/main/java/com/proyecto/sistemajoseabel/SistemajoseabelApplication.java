@@ -28,6 +28,7 @@ public class SistemajoseabelApplication implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
         login11211.setVisible(true);  
+        
     }
 }
 

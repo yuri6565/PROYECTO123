@@ -1,53 +1,26 @@
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JDialog.java to edit this template
  */
 package com.proyecto.sistemajoseabel.vista;
-
-import com.proyecto.sistemajoseabel.Servicios.ServicioLogin;
-
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
-
 
 /**
  *
  * @author Personal
  */
+public class cargando11 extends javax.swing.JDialog {
 
-
-public class yy extends javax.swing.JFrame {
-
-    public yy() {
+    /**
+     * Creates new form kla
+     */
+    public cargando11(java.awt.Frame parent, boolean modal) {
+        super(parent, modal);
         initComponents();
+        
 setLocationRelativeTo(null); 
 
 
-
-setLayout(new GridBagLayout());
-GridBagConstraints gbc = new GridBagConstraints();
-gbc.gridx = 0;
-gbc.gridy = 0;
-gbc.anchor = GridBagConstraints.CENTER; 
-add(kGradientPanel1, gbc);
-
-
-JPanel fondo = new JPanel(new BorderLayout());
-fondo.add(kGradientPanel1, BorderLayout.CENTER);
-setContentPane(fondo);
-
-
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,13 +31,16 @@ setContentPane(fondo);
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         kGradientPanel1 = new keeptoo.KGradientPanel();
         rSPanelImage1 = new rojerusan.RSPanelImage();
         rSProgressMaterial1 = new RSMaterialComponent.RSProgressMaterial();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         kGradientPanel1.setkEndColor(new java.awt.Color(239, 248, 255));
         kGradientPanel1.setkStartColor(new java.awt.Color(254, 254, 254));
@@ -83,36 +59,45 @@ setContentPane(fondo);
             .addGap(0, 200, Short.MAX_VALUE)
         );
 
-        kGradientPanel1.add(rSPanelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, 210, 200));
-        kGradientPanel1.add(rSProgressMaterial1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 330, 110, 110));
+        kGradientPanel1.add(rSPanelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 80, 210, 200));
+        kGradientPanel1.add(rSProgressMaterial1, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 410, 110, 110));
 
         jLabel2.setFont(new java.awt.Font("Roboto", 3, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(93, 97, 92));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setText("Iniciando Sesión, por favor espera...");
-        kGradientPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 580, -1, -1));
+        jLabel2.setText("Un momento...Estamos verificando tu solicitud");
+        kGradientPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 600, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Roboto", 3, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(93, 97, 92));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Cargando...");
-        kGradientPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 520, -1, -1));
+        kGradientPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 560, -1, -1));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(kGradientPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 1697, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(kGradientPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 821, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(23, 23, 23))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -121,7 +106,7 @@ setContentPane(fondo);
     /**
      * @param args the command line arguments
      */
- public static void startFrm(String args[]) {
+    public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -135,20 +120,30 @@ setContentPane(fondo);
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Correo_electronico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(cargando11.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Correo_electronico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(cargando11.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Correo_electronico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(cargando11.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Correo_electronico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(cargando11.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
 
-        /* Create and display the form */
+        /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new yy().setVisible(true);
+                cargando11 dialog = new cargando11(new javax.swing.JFrame(), true);
+                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosing(java.awt.event.WindowEvent e) {
+                        System.exit(0);
+                    }
+                });
+                dialog.setVisible(true);
             }
         });
     }
@@ -156,11 +151,9 @@ setContentPane(fondo);
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
     private keeptoo.KGradientPanel kGradientPanel1;
     private rojerusan.RSPanelImage rSPanelImage1;
     private RSMaterialComponent.RSProgressMaterial rSProgressMaterial1;
     // End of variables declaration//GEN-END:variables
-
-
 }
-
