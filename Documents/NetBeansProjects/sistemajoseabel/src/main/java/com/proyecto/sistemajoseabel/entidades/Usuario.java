@@ -38,7 +38,7 @@ private String usuario;
 private String contrasena;
 
 @Column (name="correo_electronico")
-private String correo_electronico;
+private String correoElectronico;;
 
 @Column(name = "rol")
 private String rol;
@@ -83,12 +83,12 @@ private String rol;
         this.contrasena = contrasena;
     }
 
-    public String getCorreo_electronico() {
-        return correo_electronico;
+    public String getCorreoElectronico() {
+        return correoElectronico;
     }
 
-    public void setCorreo_electronico(String correo_electronico) {
-        this.correo_electronico = correo_electronico;
+    public void setCorreoElectronico(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
     }
 
     public String getRol() {
@@ -99,13 +99,13 @@ private String rol;
         this.rol = rol;
     }
 
-    public Usuario(long id, String nombre, String apellido, String usuario, String contrasena, String correo_electronico, String rol) {
+    public Usuario(long id, String nombre, String apellido, String usuario, String contrasena, String correoElectronico, String rol) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
         this.usuario = usuario;
         this.contrasena = contrasena;
-        this.correo_electronico = correo_electronico;
+        this.correoElectronico = correoElectronico;
         this.rol = rol;
     }
 

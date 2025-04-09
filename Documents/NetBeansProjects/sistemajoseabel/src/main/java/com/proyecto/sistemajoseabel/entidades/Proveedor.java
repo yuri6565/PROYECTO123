@@ -26,7 +26,8 @@ public class Proveedor {
 
     @Column(name = "direccion")
     private String direccion;
-
+  @Column(name = "ñaña")
+    private String ñaña;
     @ManyToMany(mappedBy = "proveedores")
     private List<Insumo1> insumos;
 
@@ -35,16 +36,20 @@ public class Proveedor {
     }
 
     // Constructor con parámetros
-    public Proveedor(int id, String nombre, String correo_electronico, String telefono, String direccion, List<Insumo1> insumos) {
+
+    public Proveedor(int id, String nombre, String correo_electronico, String telefono, String direccion, String ñaña, List<Insumo1> insumos) {
         this.id = id;
         this.nombre = nombre;
         this.correo_electronico = correo_electronico;
         this.telefono = telefono;
         this.direccion = direccion;
+        this.ñaña = ñaña;
         this.insumos = insumos;
     }
+   
 
     // Getters y Setters
+
     public int getId() {
         return id;
     }
@@ -85,6 +90,14 @@ public class Proveedor {
         this.direccion = direccion;
     }
 
+    public String getÑaña() {
+        return ñaña;
+    }
+
+    public void setÑaña(String ñaña) {
+        this.ñaña = ñaña;
+    }
+
     public List<Insumo1> getInsumos() {
         return insumos;
     }
@@ -92,4 +105,5 @@ public class Proveedor {
     public void setInsumos(List<Insumo1> insumos) {
         this.insumos = insumos;
     }
+  
 }

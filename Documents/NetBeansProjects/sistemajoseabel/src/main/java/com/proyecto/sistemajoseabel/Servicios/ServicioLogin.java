@@ -23,6 +23,14 @@ public class ServicioLogin {
         Optional<Usuario> usuarioEncontrado = usuarioDao.autenticarUsuario(usuario, contrasena);
         return usuarioEncontrado.isPresent();
     }
+    
+
+
+    public boolean verificar(String correoElectronico) {
+        Optional<Usuario> usuarioEncontrado = usuarioDao.verificarCorreo(correoElectronico);
+        return usuarioEncontrado.isPresent();
+    }
+    
 }
 
 

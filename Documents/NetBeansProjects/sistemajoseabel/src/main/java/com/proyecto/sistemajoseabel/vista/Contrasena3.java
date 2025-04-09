@@ -28,15 +28,16 @@ import org.springframework.stereotype.Component;
  * @author Personal
 */
 @Component
-public class Login1121 extends javax.swing.JFrame {
+public class Contrasena3 extends javax.swing.JFrame {
 
- @Autowired
-    private ServicioLogin servicioLogin;
 
-    public Login1121() {
+
+    public Contrasena3() {
         initComponents();
-        // Nada que use servicioLogin aquí
-    
+       setExtendedState(JFrame.MAXIMIZED_BOTH); 
+setLocationRelativeTo(null); 
+     setExtendedState(JFrame.MAXIMIZED_BOTH); 
+setLocationRelativeTo(null); 
 
         
 setLayout(new GridBagLayout());
@@ -70,11 +71,14 @@ setContentPane(fondo);
         rSPanelImage1 = new rojerusan.RSPanelImage();
         jLabel11 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
         rSMaterialButtonRectangle2 = new rojerusan.RSMaterialButtonRectangle();
-        txt_usuario = new RSMaterialComponent.RSTextFieldIconOne();
-        passtxt = new RSMaterialComponent.RSPasswordIconOne();
+        txtcorreo = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,77 +95,83 @@ setContentPane(fondo);
         rSPanelImage1.setLayout(rSPanelImage1Layout);
         rSPanelImage1Layout.setHorizontalGroup(
             rSPanelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 180, Short.MAX_VALUE)
+            .addGap(0, 90, Short.MAX_VALUE)
         );
         rSPanelImage1Layout.setVerticalGroup(
             rSPanelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 160, Short.MAX_VALUE)
+            .addGap(0, 90, Short.MAX_VALUE)
         );
 
-        jPanel6.add(rSPanelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 180, 160));
+        jPanel6.add(rSPanelImage1, new org.netbeans.lib.awtextra.AbsoluteConstraints(200, 10, 90, 90));
 
         jLabel11.setFont(new java.awt.Font("SansSerif", 1, 30)); // NOI18N
-        jLabel11.setText("¡BIENVENIDO! ");
-        jPanel6.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 180, -1, -1));
+        jLabel11.setText("Revisa tu bandeja de entrada");
+        jPanel6.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 100, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel7.setText("Usuario");
-        jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, 20));
-
-        jLabel6.setFont(new java.awt.Font("SansSerif", 1, 16)); // NOI18N
-        jLabel6.setText("Contraseña");
-        jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 340, -1, -1));
-
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(29, 30, 51));
-        jLabel2.setText("¿Olvidaste contraseña?");
-        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                jLabel2MousePressed(evt);
-            }
-        });
-        jPanel6.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 400, -1, 20));
+        jLabel7.setText("Codigo");
+        jPanel6.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 240, -1, 20));
 
         rSMaterialButtonRectangle2.setBackground(new java.awt.Color(29, 30, 51));
-        rSMaterialButtonRectangle2.setText("INGRESAR ");
+        rSMaterialButtonRectangle2.setText("Siguiente ");
+        rSMaterialButtonRectangle2.setActionCommand("Siguiente->");
         rSMaterialButtonRectangle2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rSMaterialButtonRectangle2ActionPerformed(evt);
             }
         });
-        jPanel6.add(rSMaterialButtonRectangle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 480, 380, 50));
+        jPanel6.add(rSMaterialButtonRectangle2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 360, 420, 50));
 
-        txt_usuario.setForeground(new java.awt.Color(0, 0, 0));
-        txt_usuario.setBorderColor(new java.awt.Color(230, 230, 230));
-        txt_usuario.setColorIcon(new java.awt.Color(204, 204, 204));
-        txt_usuario.setColorTransparente(true);
-        txt_usuario.setDisabledTextColor(new java.awt.Color(102, 102, 102));
-        txt_usuario.setIcons(rojeru_san.efectos.ValoresEnum.ICONS.PEOPLE);
-        txt_usuario.setPhColor(new java.awt.Color(51, 51, 51));
-        txt_usuario.setPlaceholder("ingrese su usuario");
-        txt_usuario.addActionListener(new java.awt.event.ActionListener() {
+        txtcorreo.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        txtcorreo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_usuarioActionPerformed(evt);
+                txtcorreoActionPerformed(evt);
             }
         });
-        jPanel6.add(txt_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 300, 380, 30));
+        jPanel6.add(txtcorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 270, 410, 40));
 
-        passtxt.setForeground(new java.awt.Color(0, 0, 0));
-        passtxt.setToolTipText("");
-        passtxt.setBorderColor(new java.awt.Color(230, 230, 230));
-        passtxt.setColorIcon(new java.awt.Color(204, 204, 204));
-        passtxt.setPhColor(new java.awt.Color(51, 51, 51));
-        passtxt.setPlaceholder("Ingrese su contraseña");
-        jPanel6.add(passtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 370, 380, 30));
+        jLabel8.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        jLabel8.setText("Introducir otra direccion de correo electronico");
+        jLabel8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel8MousePressed(evt);
+            }
+        });
+        jPanel6.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 510, 340, 20));
 
-        kGradientPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 130, 460, 590));
+        jLabel9.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        jLabel9.setText("Ingresa el codigo de 6 digitos que te hemos enviado a ");
+        jPanel6.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 170, 410, 20));
+
+        jLabel10.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        jLabel10.setText("tu correo electronico");
+        jPanel6.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 190, 410, 20));
+
+        jLabel6.setFont(new java.awt.Font("SansSerif", 0, 16)); // NOI18N
+        jLabel6.setText("Reenviar codigo");
+        jLabel6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jLabel6MousePressed(evt);
+            }
+        });
+        jPanel6.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 320, 120, 20));
+
+        jLabel13.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
+        jLabel13.setText("correos no deseados");
+        jPanel6.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 430, 170, 20));
+
+        jLabel14.setFont(new java.awt.Font("SansSerif", 0, 17)); // NOI18N
+        jLabel14.setText("¿no has recibido el correo? verifica la carpeta de ");
+        jPanel6.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 410, 400, 20));
+
+        kGradientPanel1.add(jPanel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 160, 470, 550));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 1300, Short.MAX_VALUE)
+            .addComponent(kGradientPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,17 +182,20 @@ setContentPane(fondo);
     }// </editor-fold>//GEN-END:initComponents
 
     private void rSMaterialButtonRectangle2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSMaterialButtonRectangle2ActionPerformed
-autenticarUsuario();  
+
     }//GEN-LAST:event_rSMaterialButtonRectangle2ActionPerformed
 
-    private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
-   
-        
-    }//GEN-LAST:event_jLabel2MousePressed
+    private void txtcorreoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtcorreoActionPerformed
 
-    private void txt_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_usuarioActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_usuarioActionPerformed
+    }//GEN-LAST:event_txtcorreoActionPerformed
+
+    private void jLabel8MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel8MousePressed
+
+    }//GEN-LAST:event_jLabel8MousePressed
+
+    private void jLabel6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MousePressed
+
+    }//GEN-LAST:event_jLabel6MousePressed
 
     /**
      * @param args the command line arguments
@@ -202,56 +215,46 @@ autenticarUsuario();
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login1121.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Contrasena3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login1121.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Contrasena3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login1121.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Contrasena3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login1121.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Contrasena3.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login1121().setVisible(true);
+                new Contrasena3().setVisible(true);
             }
         });
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel6;
     private keeptoo.KGradientPanel kGradientPanel1;
-    private RSMaterialComponent.RSPasswordIconOne passtxt;
     private rojerusan.RSMaterialButtonRectangle rSMaterialButtonRectangle2;
     private rojerusan.RSPanelImage rSPanelImage1;
-    private RSMaterialComponent.RSTextFieldIconOne txt_usuario;
+    private javax.swing.JTextField txtcorreo;
     // End of variables declaration//GEN-END:variables
 
     
 
     
-    private void autenticarUsuario() {
-        String usuario = txt_usuario.getText();
-        String contrasena = new String(passtxt.getPassword());
-
-        if (servicioLogin.autenticar(usuario, contrasena)) { 
-            JOptionPane.showMessageDialog(this, "Acceso concedido");
-            System.out.println("bien con exitoooooo " + (servicioLogin != null));
-            Principal pc = new Principal();
-         pc.setVisible(true);
-        this.dispose();
-
-        } else {
-            JOptionPane.showMessageDialog(this, "Usuario o contraseña incorrectos");
-            System.out.println("ServicioLogin inyectado: " + (servicioLogin != null));
-
-        }
-    }
+  
 
 }
 

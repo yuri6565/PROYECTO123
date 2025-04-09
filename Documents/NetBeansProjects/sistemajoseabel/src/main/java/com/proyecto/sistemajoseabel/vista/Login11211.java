@@ -26,6 +26,7 @@ import org.springframework.stereotype.Component;
  * @author Personal
  */
 
+
 @Component
 public class Login11211 extends javax.swing.JFrame {
  private boolean isPasswordVisible = false;
@@ -38,11 +39,32 @@ public class Login11211 extends javax.swing.JFrame {
     /**
      * Creates new form Login1
      */
+    @Autowired
+private Correo_electronico correoElectronico;
      @Autowired
     private ServicioLogin servicioLogin;
     public Login11211() {
         initComponents();
+    setExtendedState(JFrame.MAXIMIZED_BOTH); 
 setLocationRelativeTo(null); 
+txt_usuario.addKeyListener(new java.awt.event.KeyAdapter() {
+    @Override
+    public void keyPressed(java.awt.event.KeyEvent evt) {
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            passtxt.requestFocus();
+        }
+    }
+});
+
+
+passtxt.addKeyListener(new java.awt.event.KeyAdapter() {
+    @Override
+    public void keyPressed(java.awt.event.KeyEvent evt) {
+        if (evt.getKeyCode() == java.awt.event.KeyEvent.VK_ENTER) {
+            iniciar.doClick(); 
+        }
+    }
+});
 
 
 
@@ -93,7 +115,7 @@ setContentPane(fondo);
         rSPanelImage3 = new rojerusan.RSPanelImage();
         rSPanelImage2 = new rojerusan.RSPanelImage();
         jLabel13 = new javax.swing.JLabel();
-        rSButtonShape1 = new RSMaterialComponent.RSButtonShape();
+        iniciar = new RSMaterialComponent.RSButtonShape();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -144,6 +166,11 @@ setContentPane(fondo);
         passtxt.setColorIcon(new java.awt.Color(204, 204, 204));
         passtxt.setPhColor(new java.awt.Color(51, 51, 51));
         passtxt.setPlaceholder("Ingrese su contraseña");
+        passtxt.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passtxtActionPerformed(evt);
+            }
+        });
         kGradientPanel1.add(passtxt, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 570, 360, 30));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
@@ -192,15 +219,15 @@ setContentPane(fondo);
         jLabel13.setText("Iniciar Sesión");
         kGradientPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 340, 320, -1));
 
-        rSButtonShape1.setBackground(new java.awt.Color(29, 30, 51));
-        rSButtonShape1.setText("                                               Ingresar");
-        rSButtonShape1.setForma(RSMaterialComponent.RSButtonShape.FORMA.ROUND);
-        rSButtonShape1.addActionListener(new java.awt.event.ActionListener() {
+        iniciar.setBackground(new java.awt.Color(29, 30, 51));
+        iniciar.setText("                                               Ingresar");
+        iniciar.setForma(RSMaterialComponent.RSButtonShape.FORMA.ROUND);
+        iniciar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rSButtonShape1ActionPerformed(evt);
+                iniciarActionPerformed(evt);
             }
         });
-        kGradientPanel1.add(rSButtonShape1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 660, 360, -1));
+        kGradientPanel1.add(iniciar, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 660, 360, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -228,15 +255,36 @@ setContentPane(fondo);
     }//GEN-LAST:event_txt_usuarioActionPerformed
 
     private void jLabel2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MousePressed
-        /*Contrasena1 dialog = new Contrasena1(new javax.swing.JFrame(), true);
-        dialog.setLocationRelativeTo(null);
-        dialog.setVisible(true);*/
+         
+         cargando11 cargando = new cargando11(new JFrame(), true);
+
+        new Thread(() -> {
+            cargando.setVisible(true);
+        }).start();
+
+        javax.swing.Timer timer = new javax.swing.Timer(2000, e -> {
+            cargando.dispose();
+
+        });
+
+        timer.setRepeats(false); // Solo una vez
+        timer.start();
+     
+        correoElectronico.setVisible(true);
+        this.dispose(); // Cierra el login
+
+
+        this.dispose();
 
     }//GEN-LAST:event_jLabel2MousePressed
 
-    private void rSButtonShape1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonShape1ActionPerformed
+    private void iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarActionPerformed
        autenticarUsuario();
-    }//GEN-LAST:event_rSButtonShape1ActionPerformed
+    }//GEN-LAST:event_iniciarActionPerformed
+
+    private void passtxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passtxtActionPerformed
+
+    }//GEN-LAST:event_passtxtActionPerformed
 
     /**
      * @param args the command line arguments
@@ -255,13 +303,13 @@ setContentPane(fondo);
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login1121.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Correo_electronico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login1121.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Correo_electronico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login1121.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Correo_electronico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login1121.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Correo_electronico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -275,13 +323,13 @@ setContentPane(fondo);
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private rojeru_san.RSButton btnVer;
+    private RSMaterialComponent.RSButtonShape iniciar;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private keeptoo.KGradientPanel kGradientPanel1;
     private RSMaterialComponent.RSPasswordIconOne passtxt;
-    private RSMaterialComponent.RSButtonShape rSButtonShape1;
     private rojerusan.RSPanelImage rSPanelImage1;
     private rojerusan.RSPanelImage rSPanelImage2;
     private rojerusan.RSPanelImage rSPanelImage3;
@@ -321,5 +369,9 @@ private void autenticarUsuario() {
         System.out.println("ServicioLogin inyectado: " + (servicioLogin != null));
     }
 }
+
+
+
+
 }
 

@@ -21,6 +21,12 @@ public class UsuarioDao {
     private RepositorioUsuario usuarioRepositorio;
 
     public Optional<Usuario> autenticarUsuario(String usuario, String contrasena) {
-        return usuarioRepositorio.findByUsuarioAndContrasena(usuario, contrasena);   
+        return usuarioRepositorio.findByUsuarioAndContrasena(usuario, contrasena); 
+        
 }
+     public Optional<Usuario> verificarCorreo(String correoElectronico) {
+        return usuarioRepositorio.findByCorreoElectronico(correoElectronico);
+
+        
+} 
 }
