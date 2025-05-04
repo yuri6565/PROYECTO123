@@ -25,26 +25,26 @@ public class Usuario {
  
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 @Id
-@Column (name="id")
+
 private long id;
+@Column(length = 250,unique = true,nullable = false)
 
-@Column (name="nombre")
 private String nombre;
+ @Column(nullable = false)
 
-@Column (name="apellido")
 private String apellido;
+ @Column(nullable = false)
 
-@Column (name="usuario")
 private String usuario;
+ @Column(nullable = false)
 
-@Column (name="contrasena")
 private String contrasena;
-
-@Column (name="correo_electronico")
+ @Column(nullable = false)
 private String correoElectronico;;
+ @Column(nullable = false)
 
-@Column(name = "rol")
 private String rol;
+  
 @OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
 private List<Asignada> asignaciones;
 
@@ -124,6 +124,11 @@ private List<Asignada> asignaciones;
     }
 
     public Usuario() {
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario{" + "id=" + id + ", nombre=" + nombre + ", apellido=" + apellido + ", usuario=" + usuario + ", contrasena=" + contrasena + ", correoElectronico=" + correoElectronico + ", rol=" + rol + ", asignaciones=" + asignaciones + '}';
     }
 
 

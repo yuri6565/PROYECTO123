@@ -15,19 +15,20 @@ public class Proveedor {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "nombre")
+  
     private String nombre;
-
-    @Column(name = "correo_electronico")
+ @Column(nullable = false)
+  
     private String correo_electronico;
-
-    @Column(name = "telefono")
+ @Column(nullable = false)
+  
     private String telefono;
-
-    @Column(name = "direccion")
+ @Column(nullable = false)
+   
     private String direccion;
-  @Column(name = "ñaña")
+  @Column(nullable = false)
     private String ñaña;
+
     @ManyToMany(mappedBy = "proveedores")
     private List<Insumo1> insumos;
 

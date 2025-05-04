@@ -20,17 +20,18 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idPedido;
 
+@Column(length = 250,unique = true,nullable = false)
     private String nombre;
-
+ @Column(nullable = false)
     private Double precioTotal;
-
+ @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private EstadoPedido estado;
-
+ @Column(nullable = false)
     private LocalDate fechaInicio;
-
+ @Column(nullable = false)
     private LocalDate fechaFin;
-
+ 
     @ManyToOne
 @JoinColumn(name = "cliente_codigo", referencedColumnName = "idcliente")
 private Cliente cliente;
@@ -104,6 +105,10 @@ private Cliente cliente;
     public Pedido() {
     }
 
+@Override
+public String toString() {
+    return nombre;
+}
 
  
   

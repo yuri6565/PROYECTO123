@@ -24,19 +24,21 @@ public class Produccion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idProduccion;
+    
+@Column(length = 250,unique = true,nullable = false)
 private String nombre;
     @Column(columnDefinition = "DATE")
     private LocalDate fechaInicio;
-
-    @Column(columnDefinition = "DATE")
+ @Column(nullable = false)
+  
     private LocalDate fechaFin;
-
+ @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private EstadoProduccion estado;
 
-    @ManyToOne
-    @JoinColumn(name = "pedido_codigo")
-    private Pedido pedido;
+ @ManyToOne
+@JoinColumn(name = "pedido_codigo", nullable = false)
+private Pedido pedido;
 
     @OneToMany(mappedBy = "produccion", cascade = CascadeType.ALL)
     private List<EtapaProduccion> etapas;

@@ -4,6 +4,7 @@
  */
 package com.proyecto.sistemajoseabel.entidades;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,9 +20,9 @@ public class UnidadMedida {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+@Column(length = 250,unique = true,nullable = false)
     private String nombre;
-
+ @Column(nullable = false)
     public Long getId() {
         return id;
     }

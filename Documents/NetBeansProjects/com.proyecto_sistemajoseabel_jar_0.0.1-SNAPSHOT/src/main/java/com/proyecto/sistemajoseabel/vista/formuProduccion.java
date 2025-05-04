@@ -4,6 +4,7 @@
  */
 package com.proyecto.sistemajoseabel.vista;
 
+import com.proyecto.sistemajoseabel.Servicios.PedidoService;
 import com.proyecto.sistemajoseabel.entidades.EstadoProduccion;
 import com.proyecto.sistemajoseabel.entidades.Pedido;
 import com.proyecto.sistemajoseabel.entidades.Produccion;
@@ -12,6 +13,7 @@ import java.awt.Frame;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.List;
 import javax.swing.JOptionPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
@@ -19,19 +21,25 @@ import org.springframework.context.ApplicationContext;
 
 public class formuProduccion extends javax.swing.JDialog {
 @Autowired
-ProduccionService serviciopro;
+    private PedidoService pedidoService; // Inyectamos el servicio de Pedido
 @Autowired
-private ApplicationContext context; 
+  private  ProduccionService serviciopro;
+    
+    @Autowired
+    private ApplicationContext context;
+
+   public formuProduccion(Frame parent, boolean modal, ProduccionService serviciopro, PedidoService pedidoService) {
+    super(parent, modal);
+    setLocationRelativeTo(parent);
+    this.serviciopro = serviciopro;
+    this.pedidoService = pedidoService;
+    initComponents();
+    cargarPedidos();
+}
 
     /**
      * Creates new form formuProduccion
      */
-    public formuProduccion(Frame parent, boolean modal, ProduccionService serviciopro) {
-        super(parent, modal);
-        setLocationRelativeTo(parent);
-        this.serviciopro = serviciopro;
-        initComponents();
-    }
     
     
 
@@ -51,9 +59,9 @@ private ApplicationContext context;
         txtinicio = new com.toedter.calendar.JDateChooser();
         txtfinal = new com.toedter.calendar.JDateChooser();
         jLabel11 = new javax.swing.JLabel();
-        txtnombre = new RSMaterialComponent.RSTextFieldMaterial();
         Boxestado1 = new RSMaterialComponent.RSComboBoxMaterial();
         jLabel12 = new javax.swing.JLabel();
+        txtnombre = new RSMaterialComponent.RSTextFieldTwo();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -108,7 +116,6 @@ private ApplicationContext context;
         jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 330, 140, -1));
 
         jComboBoxPedido.setForeground(new java.awt.Color(102, 102, 102));
-        jComboBoxPedido.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "pendiente", "proceso", "finalizado" }));
         jComboBoxPedido.setFont(new java.awt.Font("Roboto Bold", 0, 14)); // NOI18N
         jComboBoxPedido.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,21 +139,6 @@ private ApplicationContext context;
         jLabel11.setText("Nombre:");
         jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
 
-        txtnombre.setEditable(false);
-        txtnombre.setBackground(new java.awt.Color(255, 255, 255));
-        txtnombre.setForeground(new java.awt.Color(0, 0, 0));
-        txtnombre.setColorMaterial(new java.awt.Color(0, 0, 0));
-        txtnombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txtnombre.setPhColor(new java.awt.Color(0, 0, 0));
-        txtnombre.setPlaceholder("");
-        txtnombre.setSelectionColor(new java.awt.Color(0, 0, 0));
-        txtnombre.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtnombreActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 210, 30));
-
         Boxestado1.setForeground(new java.awt.Color(102, 102, 102));
         Boxestado1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccionar", "pendiente", "proceso", "finalizado" }));
         Boxestado1.setFont(new java.awt.Font("Roboto Bold", 0, 14)); // NOI18N
@@ -160,6 +152,18 @@ private ApplicationContext context;
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel12.setText("Estado:");
         jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 150, -1, -1));
+
+        txtnombre.setForeground(new java.awt.Color(46, 49, 82));
+        txtnombre.setBorderColor(new java.awt.Color(46, 49, 82));
+        txtnombre.setPhColor(new java.awt.Color(46, 49, 82));
+        txtnombre.setPlaceholder("");
+        txtnombre.setSelectionColor(new java.awt.Color(46, 49, 82));
+        txtnombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtnombreActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtnombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 210, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -178,60 +182,62 @@ private ApplicationContext context;
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
- 
-String nombre = txtnombre.getText().trim();
+  String nombre = txtnombre.getText().trim();
 
-// Validar fechas
-if (txtinicio.getDate() == null || txtfinal.getDate() == null) {
-    JOptionPane.showMessageDialog(this, "Por favor seleccione ambas fechas.");
-    return;
-}
+    // Validar fechas
+    if (txtinicio.getDate() == null || txtfinal.getDate() == null) {
+        JOptionPane.showMessageDialog(this, "Por favor seleccione ambas fechas.");
+        return;
+    }
 
-// Convertir fechas de java.util.Date a java.time.LocalDate
-LocalDate fechaInicio = txtinicio.getDate().toInstant()
-    .atZone(ZoneId.systemDefault())
-    .toLocalDate();
+    // Convertir fechas de java.util.Date a java.time.LocalDate
+    LocalDate fechaInicio = txtinicio.getDate().toInstant()
+            .atZone(ZoneId.systemDefault())
+            .toLocalDate();
 
-LocalDate fechaFin = txtfinal.getDate().toInstant()
-    .atZone(ZoneId.systemDefault())
-    .toLocalDate();
+    LocalDate fechaFin = txtfinal.getDate().toInstant()
+            .atZone(ZoneId.systemDefault())
+            .toLocalDate();
 
-// Validar selección de estado
-String estadoStr = Boxestado1.getSelectedItem().toString();
-if (estadoStr.equals("Seleccione estado")) {
-    JOptionPane.showMessageDialog(this, "Por favor seleccione un estado válido.");
-    return;
-}
+    // Validar selección de estado
+    String estadoStr = Boxestado1.getSelectedItem().toString();
+    if (estadoStr.equals("Seleccione estado")) {
+        JOptionPane.showMessageDialog(this, "Por favor seleccione un estado válido.");
+        return;
+    }
 
-EstadoProduccion estadoProduccion;
-try {
-    estadoProduccion = EstadoProduccion.valueOf(estadoStr.toUpperCase()); // Asegúrate que coincida con los enum
-} catch (IllegalArgumentException ex) {
-    JOptionPane.showMessageDialog(this, "Estado no válido.");
-    return;
-}
+    // Convertir estado a enum
+    EstadoProduccion estadoProduccion;
+    try {
+        estadoProduccion = EstadoProduccion.valueOf(estadoStr.toUpperCase()); // Asegúrate que coincida con los enum
+    } catch (IllegalArgumentException ex) {
+        JOptionPane.showMessageDialog(this, "Estado no válido.");
+        return;
+    }
 
-// Validar selección de pedido
-Pedido pedido = (Pedido) jComboBoxPedido.getSelectedItem();
+    // Validar selección de pedido
+    Pedido pedido = (Pedido) jComboBoxPedido.getSelectedItem();
+    if (pedido == null || "Seleccionar".equals(pedido.toString())) {
+        JOptionPane.showMessageDialog(this, "Por favor seleccione un pedido.");
+        return;
+    }
 
+    // Crear objeto Producción
+    Produccion nuevaProduccion = new Produccion();
+    nuevaProduccion.setNombre(nombre);
+    nuevaProduccion.setFechaInicio(fechaInicio);
+    nuevaProduccion.setFechaFin(fechaFin);
+    nuevaProduccion.setEstado(estadoProduccion);
+    nuevaProduccion.setPedido(pedido);
 
-
-// Crear objeto Producción
-Produccion nuevaProduccion = new Produccion();
-nuevaProduccion.setNombre(nombre);
-nuevaProduccion.setFechaInicio(fechaInicio);
-nuevaProduccion.setFechaFin(fechaFin);
-nuevaProduccion.setEstado(estadoProduccion);
-nuevaProduccion.setPedido(pedido);
-
-// Guardar
-try {
-    serviciopro.guardar(nuevaProduccion);
-    JOptionPane.showMessageDialog(this, "Producción guardada exitosamente.");
-    dispose();
-} catch (Exception e) {
-    JOptionPane.showMessageDialog(this, "Error al guardar la producción: " + e.getMessage());
-}
+    // Guardar la nueva producción
+    try {
+        serviciopro.guardar(nuevaProduccion); // Llamamos al servicio para guardar la producción
+        JOptionPane.showMessageDialog(this, "Producción guardada exitosamente.");
+        dispose(); // Cerrar el formulario al guardar exitosamente
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(this, "Error al guardar la producción: " + e.getMessage());
+    }
 
 
     }//GEN-LAST:event_btnGuardarActionPerformed
@@ -245,13 +251,13 @@ try {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxPedidoActionPerformed
 
-    private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtnombreActionPerformed
-
     private void Boxestado1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boxestado1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Boxestado1ActionPerformed
+
+    private void txtnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtnombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtnombreActionPerformed
 
     /**
      * @param context
@@ -278,6 +284,22 @@ try {
     private javax.swing.JPanel jPanel2;
     private com.toedter.calendar.JDateChooser txtfinal;
     private com.toedter.calendar.JDateChooser txtinicio;
-    private RSMaterialComponent.RSTextFieldMaterial txtnombre;
+    private RSMaterialComponent.RSTextFieldTwo txtnombre;
     // End of variables declaration//GEN-END:variables
+ private void cargarPedidos() {
+        // Llamamos al servicio de pedidos para obtener todos los pedidos
+        List<Pedido> listaPedidos = pedidoService.obtenerTodasLasProducciones();
+
+        // Limpiamos el JComboBox
+        jComboBoxPedido.removeAllItems();
+
+        // Agregamos la opción "Seleccionar" por defecto
+        jComboBoxPedido.addItem("Seleccionar");
+
+        // Ahora agregamos todos los pedidos al JComboBox
+        for (Pedido pedido : listaPedidos) {
+            jComboBoxPedido.addItem(pedido); // Aquí también asegúrate de que el Pedido tiene un buen método toString()
+        }
+    }
+
 }

@@ -11,7 +11,7 @@ package com.proyecto.sistemajoseabel.entidades;
 public enum EstadoEtapa {
  
     NO_INICIADA,
-    EN_PROCESO,
+    ENPROCESO,
     FINALIZADA
     // Agrega los estados reales según tu base de datos
 }
