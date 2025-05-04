@@ -4,17 +4,13 @@
 
 package com.proyecto.sistemajoseabel.vista;
 
-import com.proyecto.sistemajoseabel.ContextoSpring.ContextoSpring1;
-import com.proyecto.sistemajoseabel.Servicios.PedidoService;
 import com.proyecto.sistemajoseabel.servicios.ProduccionService;
 import javax.swing.JFrame;
-import org.springframework.stereotype.Component;
 
 /**
  *
  * @author pc
  */
-@Component
 public final class Produccion22 extends javax.swing.JPanel {
 
 
@@ -25,19 +21,23 @@ public final class Produccion22 extends javax.swing.JPanel {
         initComponents();
 
         this.produccion.setSelected(true);
-if (this.produccion.isSelected()) {
-  ProduccionService produccionService = ContextoSpring1.getContexto().getBean(ProduccionService.class);
-PedidoService pedidoService= ContextoSpring1.getContexto().getBean(PedidoService.class);
-ProduccionContenido panel = new ProduccionContenido(produccionService,pedidoService );
 
-    panel.setSize(1250, 630);
-    panel.setLocation(0, 0);
-    panelPrincipal.removeAll();
-    panelPrincipal.add(panel);
-    panelPrincipal.revalidate();
-    panelPrincipal.repaint();
-}
+   if (!this.produccion.isSelected()) {
+        this.produccion.setSelected(true);
+        this.detalleProduccion.setSelected(false);
+        this.etapaProduccion.setSelected(false);
 
+        ProduccionService produccionService = new ProduccionService(); // o úsalo como singleton/inyección
+        ProduccionContenido c = new ProduccionContenido(produccionService);
+
+        c.setSize(1250, 630);
+        c.setLocation(0, 0);
+
+        panelPrincipal.removeAll();
+        panelPrincipal.add(c);
+        panelPrincipal.revalidate();
+        panelPrincipal.repaint();
+    }
     }
 
     @SuppressWarnings("unchecked")
@@ -163,22 +163,22 @@ ProduccionContenido panel = new ProduccionContenido(produccionService,pedidoServ
     }//GEN-LAST:event_etapaProduccionActionPerformed
 
     private void produccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_produccionActionPerformed
+        if (!this.produccion.isSelected()) {
         this.produccion.setSelected(true);
-if (this.produccion.isSelected()) {
-  ProduccionService produccionService = ContextoSpring1.getContexto().getBean(ProduccionService.class);
-PedidoService pedidoService= ContextoSpring1.getContexto().getBean(PedidoService.class);
-ProduccionContenido panel = new ProduccionContenido(produccionService,pedidoService );
+        this.detalleProduccion.setSelected(false);
+        this.etapaProduccion.setSelected(false);
 
+        ProduccionService produccionService = new ProduccionService(); // o úsalo como singleton/inyección
+        ProduccionContenido c = new ProduccionContenido(produccionService);
 
-    panel.setSize(1250, 630);
-    panel.setLocation(0, 0);
-    panelPrincipal.removeAll();
-    panelPrincipal.add(panel);
-    panelPrincipal.revalidate();
-    panelPrincipal.repaint();
-    System.out.println("seleccionado?" + this.produccion.isSelected());
-    System.out.println("panel agregado?" + panel);
-}
+        c.setSize(1250, 630);
+        c.setLocation(0, 0);
+
+        panelPrincipal.removeAll();
+        panelPrincipal.add(c);
+        panelPrincipal.revalidate();
+        panelPrincipal.repaint();
+    }
     }//GEN-LAST:event_produccionActionPerformed
 
 

@@ -5,8 +5,6 @@
 package com.proyecto.sistemajoseabel.vista;
 
 import com.proyecto.sistemajoseabel.ContextoSpring.ContextoSpring1;
-import com.proyecto.sistemajoseabel.Servicios.ClienteService;
-import com.proyecto.sistemajoseabel.entidades.Usuario;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -28,45 +26,8 @@ import org.springframework.stereotype.Component;
  *
  * @author Personal
  */
-@Component
-
 public class Principal1 extends javax.swing.JFrame {
-    
-     private Usuario usuario; // ← Guardamos el usuario logueado
-
-    public Principal1(Usuario usuario) {
-        this.usuario = usuario; // ← Lo recibimos desde el login
-        initComponents();
-        configurarVistaPorTipoDeUsuario(); // ← Ocultar o mostrar botones
-        // Tu código de inicialización sigue como está
-      
-    }
-    
-  private void configurarVistaPorTipoDeUsuario() {
-        String tipo = usuario.getRol();
-
-        switch (tipo) {
-            case "ADMIN":
-                // Ver todo
-                break;
-            case "CONTADOR":
-                uno.setVisible(false); // Oculta "Materiales"
-                seis.setVisible(false); // Oculta "Herramientas"
-                break;
-            case "TRABAJADOR":
-                uno.setVisible(true);
-                nueve.setVisible(true);
-                dos.setVisible(false);
-                break;
-            default:
-                JOptionPane.showMessageDialog(this, "Tipo de usuario desconocido");
-                break;
-        }
-  }
     private JPanel submenuInventario;
-    @Autowired
-private ClienteService clienteService;
-
     private boolean submenuVisible = false; // Para controlar si el submenú está visible
     private rojeru_san.RSButton item1; // Botón "Materiales" del submenú
     private rojeru_san.RSButton item2; // Botón "Herramientas" del submenú
@@ -99,7 +60,7 @@ private ClienteService clienteService;
         item1.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 60, 1, 1)); // Margen izquierdo para alinear con el texto del menú
         item1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         item1.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-      //  item1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tratar-con-cuidado.png")));
+        item1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tratar-con-cuidado.png")));
         item1.setIconTextGap(10);
         item1.setText("Materiales");
         item1.setColorHover(new Color(150, 150, 150)); // Mismo color de hover que los botones del menú
@@ -112,7 +73,7 @@ private ClienteService clienteService;
         item2.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 60, 1, 1)); // Margen izquierdo para alinear con el texto del menú
         item2.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         item2.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-       // item2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/llave-inglesa.png")));
+        item2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/llave-inglesa.png")));
         item2.setIconTextGap(10);
         item2.setText("Herramientas");
         item2.setColorHover(new Color(150, 150, 150)); // Mismo color de hover que los botones del menú
@@ -190,7 +151,7 @@ private ClienteService clienteService;
         item3.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 60, 1, 1));
         item3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         item3.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-       // item3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bolsa-de-la-compra.png"))); // Puedes cambiar el icono
+        item3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/bolsa-de-la-compra.png"))); // Puedes cambiar el icono
         item3.setIconTextGap(10);
         item3.setText("Pedidos");
         item3.setColorHover(new Color(150, 150, 150));
@@ -204,7 +165,7 @@ private ClienteService clienteService;
         item4.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 60, 1, 1));
         item4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         item4.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-      //  item4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/solicitud-de-cotizacion.png"))); // Puedes cambiar el icono
+        item4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/solicitud-de-cotizacion.png"))); // Puedes cambiar el icono
         item4.setIconTextGap(10);
         item4.setText("Cotización");
         item4.setColorHover(new Color(150, 150, 150));
@@ -1058,13 +1019,7 @@ contenedor.repaint();
             this.nueve.setSelected(false);
             this.siete1.setSelected(false);
 
-         Produccion22 panelCliente = ContextoSpring1.getContexto().getBean(Produccion22.class);
- panelCliente.setSize(1290, 730);
- panelCliente.setLocation(0, 0);
-contenedor.removeAll();
-contenedor.add(panelCliente);
-contenedor.revalidate();
-contenedor.repaint();    
+            
 
         }
 

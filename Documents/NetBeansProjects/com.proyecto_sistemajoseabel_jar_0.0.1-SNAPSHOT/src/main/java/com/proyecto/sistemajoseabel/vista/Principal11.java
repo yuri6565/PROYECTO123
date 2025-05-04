@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
  *
  * @author Personal
  */
-
+@Component
 public class Principal11 extends javax.swing.JFrame {
 @Autowired
 private ClienteService clienteService;
@@ -627,14 +627,7 @@ contenedor.repaint();
             this.cinco.setSelected(false);
             this.seis.setSelected(false);
             this.ocho.setSelected(false);
- Produccion22 panelCliente = ContextoSpring1.getContexto().getBean(Produccion22.class);
- panelCliente.setSize(1290, 730);
- panelCliente.setLocation(0, 0);
-contenedor.removeAll();
-contenedor.add(panelCliente);
-contenedor.revalidate();
-contenedor.repaint();
-
+ 
 
         }
         animacion();

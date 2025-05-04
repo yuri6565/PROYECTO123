@@ -17,14 +17,14 @@ public class EtapaProduccion {
       @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idEtapaProduccion;
-@Column(length = 250,unique = true,nullable = false)
+
     private String nombreEtapa;
- @Column(nullable = false)
+
     @Enumerated(EnumType.STRING)
     private EstadoEtapa estado;
- @Column(nullable = false)
+
     private LocalDate fechaInicio;
- @Column(nullable = false)
+
     private LocalDate fechaFin;
 
     @ManyToOne

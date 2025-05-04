@@ -4,7 +4,6 @@
  */
 package com.proyecto.sistemajoseabel.vista;
 
-import com.proyecto.sistemajoseabel.Servicios.PedidoService;
 import com.proyecto.sistemajoseabel.entidades.Produccion;
 import com.proyecto.sistemajoseabel.servicios.ProduccionService;
 import java.awt.Color;
@@ -28,20 +27,21 @@ import org.springframework.stereotype.Component;
 public final class ProduccionContenido extends javax.swing.JPanel {
 
 ProduccionService serviciopro;
-PedidoService pedidoService;
     /**
      * Creates new form produccionContenido
      */
    @Autowired
-public ProduccionContenido(ProduccionService serviciopro, PedidoService pedidoService) {
+public ProduccionContenido(ProduccionService serviciopro) {
     this.serviciopro = serviciopro;
-    this.pedidoService = pedidoService;
     initComponents();
     // resto del código
-   Tabla1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        Tabla1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         Tabla1.setModel(new javax.swing.table.DefaultTableModel(
                 new Object[][]{},
-                new String[]{"ID", "nombre ", "Fecha inicio", "Fecha fin", "Estado", "pedido"}
+                new String[]{"ID", 
+                    
+                    "Nombre ", "Fecha inicio", "Fecha fin", "Estado"}
         ));
 
         Tabla1.setCellSelectionEnabled(false);
@@ -166,13 +166,12 @@ public ProduccionContenido(ProduccionService serviciopro, PedidoService pedidoSe
     }//GEN-LAST:event_txtbuscarActionPerformed
 
     private void btnNuevoProducActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoProducActionPerformed
-       
-      
-     java.awt.Frame parent = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this); // Obtener el Frame principal
-        formuProduccion dialog = new formuProduccion(parent, true, serviciopro,pedidoService);
+        java.awt.Frame parent = (java.awt.Frame) javax.swing.SwingUtilities.getWindowAncestor(this); // Obtener el Frame principal
+        formuProduccion dialog = new formuProduccion(parent, true, serviciopro);
         dialog.setLocationRelativeTo(null);
         dialog.setVisible(true);
-         cargarTablaProduccion();
+        cargarTablaProduccion();
+   
        
     }//GEN-LAST:event_btnNuevoProducActionPerformed
 
@@ -268,11 +267,9 @@ public ProduccionContenido(ProduccionService serviciopro, PedidoService pedidoSe
                 produccion.getNombre(),
                 produccion.getFechaFin(),
                 produccion.getFechaFin(),
-                produccion.getEstado(),
-                produccion.getPedido().getNombre()
+                produccion.getEstado()
             });
         }
-        
     }
 
     }

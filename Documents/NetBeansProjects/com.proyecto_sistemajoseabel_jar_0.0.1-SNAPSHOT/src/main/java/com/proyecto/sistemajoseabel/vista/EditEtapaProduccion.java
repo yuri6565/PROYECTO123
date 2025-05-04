@@ -53,15 +53,15 @@ public class EditEtapaProduccion extends javax.swing.JDialog {
         btnGuardar = new rojeru_san.RSButtonRiple();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
+        txtetapa = new RSMaterialComponent.RSTextFieldMaterial();
         btnCancelar = new rojeru_san.RSButtonRiple();
         jLabel11 = new javax.swing.JLabel();
         Boxestado = new RSMaterialComponent.RSComboBoxMaterial();
         txtFechainicio = new com.toedter.calendar.JDateChooser();
         txtfechafin = new com.toedter.calendar.JDateChooser();
-        txtetapa = new RSMaterialComponent.RSTextFieldTwo();
+        txtBusca = new RSMaterialComponent.RSTextFieldTwo();
         jLabel12 = new javax.swing.JLabel();
         btnBusca = new rojeru_san.RSButtonRiple();
-        txtBusca1 = new RSMaterialComponent.RSTextFieldTwo();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -101,6 +101,21 @@ public class EditEtapaProduccion extends javax.swing.JDialog {
         jLabel10.setText("Nombre etapa:");
         jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 130, -1, -1));
 
+        txtetapa.setEditable(false);
+        txtetapa.setBackground(new java.awt.Color(255, 255, 255));
+        txtetapa.setForeground(new java.awt.Color(0, 0, 0));
+        txtetapa.setColorMaterial(new java.awt.Color(0, 0, 0));
+        txtetapa.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtetapa.setPhColor(new java.awt.Color(0, 0, 0));
+        txtetapa.setPlaceholder("");
+        txtetapa.setSelectionColor(new java.awt.Color(0, 0, 0));
+        txtetapa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtetapaActionPerformed(evt);
+            }
+        });
+        jPanel1.add(txtetapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 200, 30));
+
         btnCancelar.setBackground(new java.awt.Color(46, 49, 82));
         btnCancelar.setText("Cancelar");
         btnCancelar.setFont(new java.awt.Font("Humnst777 BlkCn BT", 1, 14)); // NOI18N
@@ -136,17 +151,17 @@ public class EditEtapaProduccion extends javax.swing.JDialog {
         txtfechafin.setDateFormatString("y-MM-d");
         jPanel1.add(txtfechafin, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 220, 190, 30));
 
-        txtetapa.setForeground(new java.awt.Color(46, 49, 82));
-        txtetapa.setBorderColor(new java.awt.Color(46, 49, 82));
-        txtetapa.setPhColor(new java.awt.Color(46, 49, 82));
-        txtetapa.setPlaceholder("");
-        txtetapa.setSelectionColor(new java.awt.Color(46, 49, 82));
-        txtetapa.addActionListener(new java.awt.event.ActionListener() {
+        txtBusca.setForeground(new java.awt.Color(46, 49, 82));
+        txtBusca.setBorderColor(new java.awt.Color(46, 49, 82));
+        txtBusca.setPhColor(new java.awt.Color(46, 49, 82));
+        txtBusca.setPlaceholder("");
+        txtBusca.setSelectionColor(new java.awt.Color(46, 49, 82));
+        txtBusca.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtetapaActionPerformed(evt);
+                txtBuscaActionPerformed(evt);
             }
         });
-        jPanel1.add(txtetapa, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 200, 30));
+        jPanel1.add(txtBusca, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, 30));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI", 0, 15)); // NOI18N
         jLabel12.setText("Busca ID:");
@@ -161,18 +176,6 @@ public class EditEtapaProduccion extends javax.swing.JDialog {
             }
         });
         jPanel1.add(btnBusca, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 90, 90, 30));
-
-        txtBusca1.setForeground(new java.awt.Color(46, 49, 82));
-        txtBusca1.setBorderColor(new java.awt.Color(46, 49, 82));
-        txtBusca1.setPhColor(new java.awt.Color(46, 49, 82));
-        txtBusca1.setPlaceholder("");
-        txtBusca1.setSelectionColor(new java.awt.Color(46, 49, 82));
-        txtBusca1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtBusca1ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(txtBusca1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 90, 100, 30));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -194,6 +197,10 @@ public class EditEtapaProduccion extends javax.swing.JDialog {
 
     }//GEN-LAST:event_btnGuardarActionPerformed
 
+    private void txtetapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtetapaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtetapaActionPerformed
+
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
         this.dispose();
         
@@ -204,17 +211,13 @@ public class EditEtapaProduccion extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_BoxestadoActionPerformed
 
-    private void txtetapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtetapaActionPerformed
+    private void txtBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBuscaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtetapaActionPerformed
+    }//GEN-LAST:event_txtBuscaActionPerformed
 
     private void btnBuscaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuscaActionPerformed
   
     }//GEN-LAST:event_btnBuscaActionPerformed
-
-    private void txtBusca1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtBusca1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtBusca1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -246,9 +249,9 @@ public class EditEtapaProduccion extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private RSMaterialComponent.RSTextFieldTwo txtBusca1;
+    private RSMaterialComponent.RSTextFieldTwo txtBusca;
     private com.toedter.calendar.JDateChooser txtFechainicio;
-    private RSMaterialComponent.RSTextFieldTwo txtetapa;
+    private RSMaterialComponent.RSTextFieldMaterial txtetapa;
     private com.toedter.calendar.JDateChooser txtfechafin;
     // End of variables declaration//GEN-END:variables
 }

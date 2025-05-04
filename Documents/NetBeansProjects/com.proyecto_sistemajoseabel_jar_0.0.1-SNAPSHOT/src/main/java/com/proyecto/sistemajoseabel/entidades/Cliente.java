@@ -20,22 +20,22 @@ import jakarta.persistence.Table;
 public class Cliente {
 @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
-
+@Column (name="idcliente")
 private int idcliente;    
 
-@Column(length = 250,unique = true,nullable = false)
 
 
+@Column (name="nombre")
 private String nombre;
- @Column(nullable = false)
+@Column (name="apellido")
 private String apellido;
- @Column(nullable = false)
+@Column (name="identificacion")
 private String identificacion;
- @Column(nullable = false)
+@Column (name="numero")
 private String numero;
- @Column(nullable = false)
+@Column (name="telefono")
 private String telefono;
- @Column(nullable = false)
+@Column (name="direccion")
 private String direccion;
 
     public int getIdcliente() {
